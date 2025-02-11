@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <link rel="stylesheet" href="../css/kitap-verme-islemleri/kitap-verme.css">
 <div class="container">
     <form action="" method="POST">

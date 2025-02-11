@@ -32,7 +32,7 @@ test("Kütüphane Otamasyonu | Kitap Ekleme İşlemleri");
         <input type="reset" value="Sil" class="btn"> 
     </div>
 </form>
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <?php require '../layout/footer.php'; ?><?php
 require '../server.php';
 //echo "Bağlantı başarılı!";

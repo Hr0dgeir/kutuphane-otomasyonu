@@ -3,8 +3,8 @@ test("Kütüphane Otamasyonu | Kullanıcı İşlemleri");
 ?>
 <?php require '../layout/header.php'; ?>
 
-<link rel="stylesheet" href="../css/kullanici-islemleri.css">
-
+<link rel="stylesheet" href="../css/kullanici-islemleri/kullanici-islemleri.css">
+<?php require '../layout/left-panel.php'; ?>
 <div class="container">
     <div class="leftPart">
         <div class="userActionContainer">

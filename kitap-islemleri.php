@@ -2,7 +2,7 @@
 test("Kütüphane Otamasyonu | Kitap İşlemleri");
 ?>
 <?php require 'layout/header.php'?>
-<?php require 'left-panel.php'; ?>
+<?php require 'layout/left-panel.php'; ?>
 
 <link rel="stylesheet" href="css/kitap-islemleri.css">
 <div class="container">

@@ -8,7 +8,7 @@ test("Kütüphane Otamasyonu | Anasayfa");
 <!--<link rel="stylesheet" href="css/kitap-islemleri.css">-->
 
 <div class="container">
-    <?php require 'left-panel.php'; ?>
+    <?php require 'layout/left-panel.php'; ?>
     <div class="middle">
         Burası Ekranın Orta Kısmıdır 
         <div class="info-container">

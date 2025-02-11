@@ -5,8 +5,8 @@ test("Kütüphane Otamasyonu | Yeni Kullanıcı Ekleme");
 <?php require '../messageBox.php'; ?>
 
 
-
-<link rel="stylesheet" href='../css/yeni-kullanici.css'>
+<?php require '../layout/left-panel.php'; ?>
+<link rel="stylesheet" href='../css/kullanici-islemleri/yeni-kullanici.css'>
 <div class="newAccountContainer">
     <form action="" method="post">
         <div class="nameArea section">

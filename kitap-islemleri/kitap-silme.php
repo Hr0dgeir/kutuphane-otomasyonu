@@ -148,7 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 }
 
 ?>
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <div class="booksTable">
     <table border="1">
         <tr>

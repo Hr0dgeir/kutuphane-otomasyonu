@@ -83,7 +83,7 @@ function getAllBooks($conn) {
 ?>
 
 
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <div class="container">
     <div class="ResultArea">
         <table border="1">

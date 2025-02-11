@@ -1,11 +1,11 @@
 body{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .newAccountContainer{
     border: 1px solid black;
     padding: 30px;
+    height: 55%;
 }
 .btn{
     height: 50px;

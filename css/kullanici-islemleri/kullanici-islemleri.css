@@ -1,7 +1,6 @@
 body{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .container{
     display: grid;
@@ -9,6 +8,9 @@ body{
     border: 1px solid black;
     padding: 30px;
     column-gap: 15px;
+    width: 50%;
+    margin-top: 40px;
+    height: 50%;
 }
 .btn{
     height: 50px;

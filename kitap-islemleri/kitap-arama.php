@@ -136,7 +136,7 @@ function getAllBooks($conn) {
     return $tags;
 }
 ?>
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <div class="container">
 <div class="resultTable">
     <table border="1">

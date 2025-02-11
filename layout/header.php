@@ -8,7 +8,6 @@
         //echo 'Oturumda kullanıcı bilgisi yok.';
         $kullaniciAdi = 'Giriş Yap';
     }
-
     //$pageTitle = isset($_SESSION['pagetitle']) ? $_SESSION['pagetitle'] : "Varsayılan Başlık";
 ?>
 <html lang="en">
@@ -24,12 +23,14 @@
         //echo $pageTitle;
         ?> 
         </title>
-        <link rel="stylesheet" href="http://localhost/kutuphane_otomasyon/css/header.css">
+        <link rel="stylesheet" href="http://localhost/kutuphane_otomasyon/css/layout/header.css">
         <link rel="stylesheet" href="http://localhost/kutuphane_otomasyon/css/normalize.css">
         <link rel="stylesheet" href="http://localhost/kutuphane_otomasyon/css/left-panel.css">
 
         <link rel="icon" type="image/png" href="http://localhost/kutuphane_otomasyon/pictures/indir (4).png">
     </head>
+    <?php require_once 'nav/kitap-verme-islemleri.php';?>
+    <?php require_once 'nav/kitap-islemleri.php';?>
     <body>
         <header class="header">
             <div class="leftPart">
@@ -40,33 +41,15 @@
             </div>
             <div class="middlePart">
                 <nav class="navBar">
-                    <select onchange="window.location.href=this.value;" class="headerNavBarBookSelect">
-                        <option class="bookOption" value="">Kitap İşlemleri</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-islemleri/kitap-ekleme.php">Kitap Ekleme</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-islemleri/kitap-silme.php">Kitap Silme</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-islemleri/kitap-guncelleme.php">Kitap Güncelleme</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-islemleri/kitap-arama.php">Kitap Arama</option>
-                    </select>
+                    <?php kitapIslemleri();?>
                 </nav>
                 <nav class="navBar">
-                    <select onchange="window.location.href=this.value;" class="headerNavBarBookSelect">
-                        <option class="bookOption" value="">Kitap Verme İşlemleri</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-verme-islemleri/kitap-alma.php">Kitap Alma</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-verme-islemleri/kitap-verme.php">Kitap Verme</option>
-                        <option class="bookOption" value="http://localhost/kutuphane_otomasyon/kitap-verme-islemleri/verilen-kitaplar.php">Verilen Kitaplar</option>
-                    </select>
+                    <?php kitapVermeİslemleri();?>
                 </nav>
             </div>
             <div class="rightPart">
                 <?php
-                $url = '';
-                if(isset($_SESSION['kullanici_adi'])){
-                    $url = 'http://localhost/kutuphane_otomasyon/kullanici-islemleri/kullanici-islemleri.php';
-                }
-                else{
-                    $url = 'http://localhost/kutuphane_otomasyon/kullanici-islemleri/kullanici-giris.php';
-                }
-                
+                    require_once 'nav/kullanici-nav.php';    
                 ?>
                 <a href=<?php echo $url; ?> class="rightPart">
                     <img src="http://localhost/kutuphane_otomasyon/pictures/indir (5).png" alt="Kullanıcı Fotoğrafı" class="headerImg">

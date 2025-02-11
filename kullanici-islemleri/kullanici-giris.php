@@ -3,7 +3,7 @@ test("Kütüphane Otamasyonu | Kullanıcı Giriş");
 ?>
 <?php require '../layout/header.php'; ?>
 <?php require '../messageBox.php';?>
-<link rel="stylesheet" href="../css/kullanici-giris.css">
+<link rel="stylesheet" href="../css/kullanici-islemleri/kullanici-giris.css">
 <div class="container-user-login">
     <div class="userLogin">
         <form action="" method="post">
@@ -25,7 +25,7 @@ test("Kütüphane Otamasyonu | Kullanıcı Giriş");
     </div>
 </div>
 
-<?php require '../left-panel.php';?>
+<?php require '../layout/left-panel.php'; ?>
 <?php require '../layout/footer.php'; ?><?php 
 require '../server.php';
 //echo "Bağlantı başarılı!";

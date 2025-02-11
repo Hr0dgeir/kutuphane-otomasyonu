@@ -1,0 +1,6 @@
+1- projeyi açıp terminale gir
+2- git deposunu kontrol et "git status"
+3- değişiklikleri staging alanına ekle "git add ."
+4- commit işlemi yap "git commit -m "mesaj";
+5- uzak depodaki değişiklikleri al "git pull --rebase origin main"
+6- değişiklikleri uzak depoya gönder "git push -u origin main"

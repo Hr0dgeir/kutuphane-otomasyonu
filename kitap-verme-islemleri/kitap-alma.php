@@ -89,7 +89,7 @@ function deleteReceiver($conn,$id){
 }
 ?>
 
-<?php require '../left-panel.php'; ?>
+<?php require '../layout/left-panel.php'; ?>
 <div class="container">
     <table border="1">
         <tr>
