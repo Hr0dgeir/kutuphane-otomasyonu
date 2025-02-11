@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+.selectBox{
+    height: 40px;
+    border-radius: 15px;
+    width: 100%;
+    background-color: black;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}
+.btn{
+    height: 50px;
+    width: 100%;
+    background-color: aqua;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.InputArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.textbox{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 30px;
+    padding: 5px;
+    font-size: 17px;
+    margin-top: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.resultTable{
+    margin-bottom: 50px;
+}

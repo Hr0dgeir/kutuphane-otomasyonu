@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.newAccountContainer{
+    border: 1px solid black;
+    padding: 30px;
+}
+.btn{
+    height: 50px;
+    width: 100%;
+    background-color: aqua;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.textbox{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 30px;
+    padding: 5px;
+    font-size: 17px;
+    margin-top: 10px;
+}
+.section{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,52 @@
+.formInputArea ,.buttonsContainer{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.optionInput{
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 15px;
+    height: 30px;
+    padding: 5px;
+    font-size: 17px;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.form{
+    width: 70%;
+    border: 1px solid black;
+    height: 60%;
+    padding: 10px;
+}
+.textbox{
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 15px;
+    height: 30px;
+    padding: 5px;
+    font-size: 17px;
+}
+.buttonsContainer{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: row;
+}
+.btn{
+    height: 50px;
+    width: 10%;
+    background-color: aqua;
+    font-size: 17px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
