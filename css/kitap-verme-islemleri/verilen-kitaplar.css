@@ -31,3 +31,6 @@ body{
     padding: 5px;
     font-size: 17px;
 }
+.resultTable{
+    overflow-y: auto;
+}

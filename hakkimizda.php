@@ -2,7 +2,7 @@
 <?php require 'pageTitle.php';
 test('Kütüphane Otomasyonu | Hakkımızda');
 ?>
-<?php require 'left-panel.php';?>
+<?php require 'layout/left-panel.php';?>
 <?php require 'server.php';?>
 <link rel="stylesheet" href="css/hakkimizda.css">
 <div class="">

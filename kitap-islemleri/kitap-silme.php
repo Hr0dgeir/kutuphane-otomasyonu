@@ -150,33 +150,35 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 ?>
 <?php require '../layout/left-panel.php'; ?>
 <div class="booksTable">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>İsim</th>
-            <th>Türü</th>
-            <th>Sayfa Sayısı</th>
-            <th>Yazar</th>
-        </tr>
-        <tbody id="dataContainer">
-            <?php
-                // Kitapları listelemek için mantık
-                if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    if (isset($_GET['textboxSearch']) && $_GET['textboxSearch']) {
-                        // Arama işlemi gerçekleşiyor
-                        $searchValue = $_GET['textboxSearch'];
-                        echo searchBook($conn, $searchValue);
-                    } else {
-                        // Varsayılan olarak tüm kitapları listele
-                        echo getAllBooks($conn);
+    <div class="resultArea">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>İsim</th>
+                <th>Türü</th>
+                <th>Sayfa Sayısı</th>
+                <th>Yazar</th>
+            </tr>
+            <tbody id="dataContainer">
+                <?php
+                    // Kitapları listelemek için mantık
+                    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                        if (isset($_GET['textboxSearch']) && $_GET['textboxSearch']) {
+                            // Arama işlemi gerçekleşiyor
+                            $searchValue = $_GET['textboxSearch'];
+                            echo searchBook($conn, $searchValue);
+                        } else {
+                            // Varsayılan olarak tüm kitapları listele
+                            echo getAllBooks($conn);
+                        }
                     }
-                }
 
-                // Veritabanı bağlantısını kapat
-                $conn->close();
-            ?>
-        </tbody>
-    </table>
+                    // Veritabanı bağlantısını kapat
+                    $conn->close();
+                ?>
+            </tbody>
+        </table>
+    </div>
     <div class="inputArea">
         <div class="searchArea">
             <form action="" method="get" class="formContainer">

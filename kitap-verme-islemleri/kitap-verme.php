@@ -7,9 +7,9 @@ test("Kütüphane Otamasyonu | Kitap Verme İşlemleri");
 <?php
 require '../server.php';
 
-function addNewReceiver($conn,$receiverName, $bookName, $date, $receiverClass, $receiverNo){
+function addNewReceiver($conn,$receiverName, $bookName, $date, $receiverClass, $receiverNo, $dateToTake){
     if(isset($_SESSION['kullanici_adi'])){
-        $sql = "INSERT INTO verilen_kitaplar (alici, kitap_ismi, verilen_tarih, alici_sinif ,alici_no) VALUES ('$receiverName', '$bookName', '$date', '$receiverClass', '$receiverNo')";
+        $sql = "INSERT INTO verilen_kitaplar (alici, kitap_ismi, verilen_tarih, alici_sinif ,alici_no,alinacak_tarih) VALUES ('$receiverName', '$bookName', '$date', '$receiverClass', '$receiverNo','$dateToTake')";
 
         if ($conn->query($sql) === TRUE) {
             //echo 'Yeni Alıcı Başarıyla Eklendi !';
@@ -31,7 +31,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        $date = $_POST['textboxDate'];
        $rClass = $_POST['textboxClass'];
        $rNo = $_POST['textboxNo']; 
-       addNewReceiver($conn,$rName, $bookName, $date, $rClass, $rNo );
+
+       $daysplus15 = new DateTime($date);
+       $daysplus15->modify('+15 days');
+       $daysplus15 = $daysplus15->format('Y-m-d');
+       
+       //echo $daysplus15->format('Y-m-d');
+       
+       addNewReceiver($conn,$rName, $bookName, $date, $rClass, $rNo , $daysplus15);
     }
 }
 ?>

@@ -46,6 +46,8 @@ body{
 }
 .ResultArea{
     margin-bottom: 10px;
+    overflow-y: auto;
+    max-height: 45%;
 }
 .searchArea{
     border: 1px solid black;

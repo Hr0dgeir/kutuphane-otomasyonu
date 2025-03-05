@@ -30,3 +30,7 @@ body{
     display: flex;
     flex-direction: column;
 }
+.resultTable{
+    max-height: 55%;
+    overflow-y: auto;
+}

@@ -23,7 +23,7 @@ body{
 }
 .InputArea{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
@@ -44,4 +44,6 @@ body{
 }
 .resultTable{
     margin-bottom: 50px;
+    overflow-y: auto;
+    max-height: 70%;
 }

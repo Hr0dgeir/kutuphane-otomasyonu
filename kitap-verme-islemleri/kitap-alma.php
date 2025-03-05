@@ -23,6 +23,7 @@ function searchBooksByReceiverName($conn, $receiverName) {
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
                 <td>" . (!empty($row['verilen_tarih']) ? $row['verilen_tarih'] : "Boş") . "</td>
+                <td>" . (!empty($row['alinacak_tarih']) ? $row['alinacak_tarih'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_sinif']) ? $row['alici_sinif'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_no']) ? $row['alici_no'] : "Boş") . "</td>
             </tr>";
@@ -49,6 +50,7 @@ function getAllReceivers($conn) {
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
                 <td>" . (!empty($row['verilen_tarih']) ? $row['verilen_tarih'] : "Boş") . "</td>
+                <td>" . (!empty($row['alinacak_tarih']) ? $row['alinacak_tarih'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_sinif']) ? $row['alici_sinif'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_no']) ? $row['alici_no'] : "Boş") . "</td>
             </tr>";
@@ -91,45 +93,48 @@ function deleteReceiver($conn,$id){
 
 <?php require '../layout/left-panel.php'; ?>
 <div class="container">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Alıcı</th>
-            <th>Kitap İsmi</th>
-            <th>Verilen Tarih</th>
-            <th>Alıcı Sınıf</th>
-            <th>Alıcı No</th>
-        </tr>
-        <tbody>
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] === "GET") {
-                    if (isset($_GET['textboxSearch']) && !empty($_GET['textboxSearch'])) {
-                        // Arama işlemi
-                        $name = $_GET['textboxSearch'];
-                        echo searchBooksByReceiverName($conn, $name);
+    <div class="resultTable">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Alıcı</th>
+                <th>Kitap İsmi</th>
+                <th>Verilen Tarih</th>
+                <th>Alınacak Tarih</th>
+                <th>Alıcı Sınıf</th>
+                <th>Alıcı No</th>
+            </tr>
+            <tbody>
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] === "GET") {
+                        if (isset($_GET['textboxSearch']) && !empty($_GET['textboxSearch'])) {
+                            // Arama işlemi
+                            $name = $_GET['textboxSearch'];
+                            echo searchBooksByReceiverName($conn, $name);
+                        } else {
+                            // Varsayılan listeleme (herhangi bir arama yapılmadığında)
+                            echo getAllReceivers($conn);
+                        }
+                    } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
+                        if (isset($_POST['textboxDelete']) && !empty($_POST['textboxDelete'])) {
+                            // Silme işlemi
+                            $id = $_POST['textboxDelete']; // textboxDelete kullanılıyor olmalıydı
+                            echo deleteReceiver($conn, $id);
+                            echo getAllReceivers($conn);
+                        } else {
+                            // Eğer POST isteği boş veya eksikse bir işlem yapılmayacak
+                            echo "Lütfen silmek için bir ID giriniz.";
+                            message('error','Lütfen ID Numarasını Giriniz');
+                        }
                     } else {
-                        // Varsayılan listeleme (herhangi bir arama yapılmadığında)
-                        echo getAllReceivers($conn);
+                        // Desteklenmeyen bir HTTP yöntemi kullanıldığında
+                        message('error','Bir Hata Oluştu !');
                     }
-                } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
-                    if (isset($_POST['textboxDelete']) && !empty($_POST['textboxDelete'])) {
-                        // Silme işlemi
-                        $id = $_POST['textboxDelete']; // textboxDelete kullanılıyor olmalıydı
-                        echo deleteReceiver($conn, $id);
-                        echo getAllReceivers($conn);
-                    } else {
-                        // Eğer POST isteği boş veya eksikse bir işlem yapılmayacak
-                        echo "Lütfen silmek için bir ID giriniz.";
-                        message('error','Lütfen ID Numarasını Giriniz');
-                    }
-                } else {
-                    // Desteklenmeyen bir HTTP yöntemi kullanıldığında
-                    message('error','Bir Hata Oluştu !');
-                }
-            ?>
+                ?>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <form action="" method="get" class="searchContainer">
         <div class="searchContainer">
             <input placeholder="Alıcı İsmine Göre Arama Yap" type="text" class="textbox" name="textboxSearch">

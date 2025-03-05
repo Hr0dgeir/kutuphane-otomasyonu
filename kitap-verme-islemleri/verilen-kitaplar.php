@@ -24,6 +24,7 @@ function searchBooksByReceiverName($conn, $receiverName) {
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
                 <td>" . (!empty($row['verilen_tarih']) ? $row['verilen_tarih'] : "Boş") . "</td>
+                <td>" . (!empty($row['alinacak_tarih']) ? $row['alinacak_tarih'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_sinif']) ? $row['alici_sinif'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_no']) ? $row['alici_no'] : "Boş") . "</td>
             </tr>";
@@ -50,6 +51,7 @@ function getAllReceivers($conn) {
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
                 <td>" . (!empty($row['verilen_tarih']) ? $row['verilen_tarih'] : "Boş") . "</td>
+                <td>" . (!empty($row['alinacak_tarih']) ? $row['alinacak_tarih'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_sinif']) ? $row['alici_sinif'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici_no']) ? $row['alici_no'] : "Boş") . "</td>
             </tr>";
@@ -65,26 +67,29 @@ function getAllReceivers($conn) {
 
 <?php require '../layout/left-panel.php'; ?>
 <div class="container">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Alıcı Adı</th>
-            <th>Alınan Kitap İsmi</th>
-            <th>Verilen Tarih</th>
-            <th>Alıcı Sınıfı</th>
-            <th>Alıcı No</th>
-        </tr>
-        <tbody id="tableContainer">
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['textboxReceiverName']) && !empty($_GET['textboxReceiverName'])) {
-                    $name = $_GET['textboxReceiverName'];
-                    echo searchBooksByReceiverName($conn, $name);
-                } else {
-                    echo getAllReceivers($conn);
-                }
-            ?>
-        </tbody>
-    </table>
+    <div class="resultTable">
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Alıcı Adı</th>
+                <th>Alınan Kitap İsmi</th>
+                <th>Verilen Tarih</th>
+                <th>Alınacak Tarih</th>
+                <th>Alıcı Sınıf</th>
+                <th>Alıcı No</th>
+            </tr>
+            <tbody id="tableContainer">
+                <?php
+                    if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['textboxReceiverName']) && !empty($_GET['textboxReceiverName'])) {
+                        $name = $_GET['textboxReceiverName'];
+                        echo searchBooksByReceiverName($conn, $name);
+                    } else {
+                        echo getAllReceivers($conn);
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
     <div class="searchContainer">
         <form action="" method="get">
             <input name="textboxReceiverName" type="text" placeholder="Alıcı Adına Göre Arama Yap" class="textbox">

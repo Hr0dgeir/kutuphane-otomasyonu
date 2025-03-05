@@ -30,36 +30,8 @@ test("Kütüphane Otamasyonu | Kullanıcı Giriş");
 require '../server.php';
 //echo "Bağlantı başarılı!";
 
-function getUserName($conn, $userMail){
-    $sql = "SELECT kullanici_adi FROM kullanicilar WHERE kullanici_mail = '$userMail'";
-    $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // Kullanıcı bulundu
-        $userData = $result->fetch_assoc();  // Veriyi al
-        //echo 'Kişi Başarıyla bulundu';
-        //print_r($userData);
-        $userName = $userData['kullanici_adi'];
-        if($userMail){
-            //echo 'Giriş Başarılı';
-            message('success','Giriş Başarılı !');
-            //session_start();
-            $_SESSION['kullanici_adi'] = $userName;
-            return true;
-        }
-        else{
-            //echo 'Giriş Başarısız';
-            message('error','Giriş Başarısız !');
-            return false;
-        }
-        
-        //print_r();  // Kullanıcı verilerini ekrana yazdır
-    } else {
-        //echo 'Kişi bulunamadı';
-        message('error','Kişi Bulunamadı !');
-    }
-}
-
+//
 function checkUser($conn, $userMail,$userPassword) {
     // Basit SELECT sorgusu
     $sql = "SELECT kullanici_sifre FROM kullanicilar WHERE kullanici_mail = '$userMail'";
@@ -101,6 +73,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     exit();
+}
+function getUserName($conn, $userMail){
+    $sql = "SELECT kullanici_adi FROM kullanicilar WHERE kullanici_mail = '$userMail'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Kullanıcı bulundu
+        $userData = $result->fetch_assoc();  // Veriyi al
+        //echo 'Kişi Başarıyla bulundu';
+        //print_r($userData);
+        $userName = $userData['kullanici_adi'];
+        if($userMail){
+            //echo 'Giriş Başarılı';
+            message('success','Giriş Başarılı ! Ana Sayfaya Yönlendiriliyorsunuz.');
+            echo '<script>
+                setTimeout(function() {
+                    window.location.href = "../index.php";
+                }, 2000);
+            </script>'; 
+            //session_start();
+            $_SESSION['kullanici_adi'] = $userName;
+            return true;
+        }
+        else{
+            //echo 'Giriş Başarısız';
+            message('error','Giriş Başarısız !');
+            return false;
+        }
+        
+        //print_r();  // Kullanıcı verilerini ekrana yazdır
+    } else {
+        //echo 'Kişi bulunamadı';
+        message('error','Kişi Bulunamadı !');
+    }
 }
 ?>
 

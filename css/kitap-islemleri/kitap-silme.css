@@ -39,3 +39,7 @@ body{
 .formContainer{
     width: 100%;   
 }
+.resultArea{
+    overflow-y: auto;
+    max-height: 60%;
+}

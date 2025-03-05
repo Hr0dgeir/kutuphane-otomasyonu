@@ -2,3 +2,28 @@ body{
     padding-top: 80px !important;
     padding-left: 14%;
 }
+.info-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 15px;
+}
+.info-box{
+    border: 1px solid aqua;
+    padding: 10px;
+}
+.info-title{
+    border-bottom: 2px solid black;
+}
+.info-p{
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+.row{
+    border-bottom:1px solid black;
+}
+.info-data{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 18px;
+}
