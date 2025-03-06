@@ -19,7 +19,7 @@ function searchBooksByReceiverName($conn, $receiverName) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $tags .= "<tr>
+            $tags .= "<tr id=".$row['ID'].">
                 <td>" . (!empty($row['ID']) ? $row['ID'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
@@ -37,6 +37,26 @@ function searchBooksByReceiverName($conn, $receiverName) {
     return $tags;
 }
 
+function checkUserBookTime($conn) {
+    $stmt = $conn->prepare("SELECT alinacak_tarih,ID FROM verilen_kitaplar");
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $today = new DateTime(); // Bugünün tarihi
+
+    while ($row = $results->fetch_assoc()) {
+        $alinacakTarih = new DateTime($row['alinacak_tarih']); // Tarihi DateTime'a çevir
+
+        if ($alinacakTarih < $today) { 
+            echo '<script>
+    let trRow = document.getElementById("' . $row['ID'] . '");
+    trRow.classList.add("red");
+</script>';
+            //echo $alinacakTarih->format('Y-m-d') . "<br>"; // Formatlı şekilde yazdır
+        }
+    }
+}
+
 function getAllReceivers($conn) {
     $stmt = $conn->prepare("SELECT * FROM verilen_kitaplar");
     $stmt->execute();
@@ -46,7 +66,7 @@ function getAllReceivers($conn) {
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $tags .= "<tr>
+            $tags .= "<tr id=".$row['ID'].">
                 <td>" . (!empty($row['ID']) ? $row['ID'] : "Boş") . "</td>
                 <td>" . (!empty($row['alici']) ? $row['alici'] : "Boş") . "</td>
                 <td>" . (!empty($row['kitap_ismi']) ? $row['kitap_ismi'] : "Boş") . "</td>
@@ -69,7 +89,7 @@ function getAllReceivers($conn) {
 <div class="container">
     <div class="resultTable">
         <table border="1">
-            <tr>
+            <tr id="Values">
                 <th>ID</th>
                 <th>Alıcı Adı</th>
                 <th>Alınan Kitap İsmi</th>
@@ -83,8 +103,10 @@ function getAllReceivers($conn) {
                     if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['textboxReceiverName']) && !empty($_GET['textboxReceiverName'])) {
                         $name = $_GET['textboxReceiverName'];
                         echo searchBooksByReceiverName($conn, $name);
+                        checkUserBookTime($conn);
                     } else {
                         echo getAllReceivers($conn);
+                        checkUserBookTime($conn);
                     }
                 ?>
             </tbody>

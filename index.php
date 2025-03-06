@@ -84,6 +84,33 @@ test("Kütüphane Otamasyonu | Anasayfa");
                     </p>
                 </div>
             </div>
+
+            <div class="info-box">
+                <div class="info-title">
+                    <p class="info-p"><strong>Toplam Kitap Sayısı</strong></p>
+                </div>
+                <div class="info-data">
+                    <?php
+                    
+                    function getAllBookCount($conn) {
+                        $stmt = $conn->prepare("SELECT * FROM Kitaplar");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        
+                        // Kitap sayısını al
+                        $bookCount = $result->num_rows;
+                        
+                        return $bookCount; // Kitap sayısını döndür
+                    }
+                    
+                    ?>
+                    <p>
+                        <?php
+                            echo getAllBookCount($conn);
+                        ?>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

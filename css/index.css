@@ -8,8 +8,9 @@ body{
     column-gap: 15px;
 }
 .info-box{
-    border: 1px solid aqua;
     padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
 }
 .info-title{
     border-bottom: 2px solid black;

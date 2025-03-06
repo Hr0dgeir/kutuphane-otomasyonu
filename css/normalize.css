@@ -3,3 +3,13 @@ body{
     padding-bottom: 80px;
     padding-left: 14%;
 }
+td{
+    padding: 10px;
+}
+th{
+    padding: 10px;
+}
+tr:hover{
+    background-color: rgb(184, 184, 184);
+    cursor: pointer;
+}
