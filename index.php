@@ -62,7 +62,7 @@ test("Kütüphane Otamasyonu | Anasayfa");
                                 if ($daysplus15 <= $today) {
                                     echo "Kitap alınması gereken tarih geldi veya geçmiş alınması gereken tarih şu şekilde: " . $alinacakTarih . "<br>";
                                     $idBookToTake = $row["ID"];
-                                    echo "Verilen Kitap ID Numarası : " . $idBookToTake ."<strong><a href='kitap-verme-islemleri/verilen-kitaplar.php'> Gitmek İçin Tıklayın </a></strong>";
+                                    echo "Verilen Kitap ID Numarası : " . $idBookToTake . "<strong><a href='kitap-verme-islemleri/verilen-kitaplar.php?id=" . $idBookToTake . "'> Gitmek İçin Tıklayın </a></strong>";
                                     $isThereAnyOutDateBook = true;
                                     echo "<div class='row'></div>";
                                 }
@@ -77,7 +77,7 @@ test("Kütüphane Otamasyonu | Anasayfa");
                         }
                     }
                     ?>
-                    <p>
+                    <p class="">
                         <?php
                             echo getAllBookTakeDays($conn);
                         ?>
