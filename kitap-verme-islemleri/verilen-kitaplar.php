@@ -141,7 +141,7 @@ function getAllReceivers($conn) {
 <div class="container">
     <div class="resultTable">
         <table border="1">
-            <tr id="Values">
+            <tr id="Values" class="table-titles">
                 <th>ID</th>
                 <th>Alıcı Adı</th>
                 <th>Alınan Kitap İsmi</th>

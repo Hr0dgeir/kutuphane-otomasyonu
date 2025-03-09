@@ -138,49 +138,49 @@ function getAllBooks($conn) {
 ?>
 <?php require '../layout/left-panel.php'; ?>
 <div class="container">
-<div class="resultTable">
-    <table border="1">
-        <tr>
-            <th>Kitabın Numarası</th>
-            <th>Kitabın İsmi</th>
-            <th>Kitabın Türü</th>
-            <th>Kitabın Sayfa Sayısı</th>
-            <th>Kitabın Yazarı</th>
-        </tr>
-        <tbody id='tableBody'>
-            <?php
-                if ($bookNameIsActive || $selectTypeIsActive || $bookAuthorIsActive) {
-                    $bookList = [];
-                    if ($bookNameIsActive) {
-                        $bookList = $kitaplar;
-                        $bookNameIsActive = false;
+    <div class="resultTable">
+        <table border="1">
+            <tr class="table-titles">
+                <th>Kitabın Numarası</th>
+                <th>Kitabın İsmi</th>
+                <th>Kitabın Türü</th>
+                <th>Kitabın Sayfa Sayısı</th>
+                <th>Kitabın Yazarı</th>
+            </tr>
+            <tbody id='tableBody'>
+                <?php
+                    if ($bookNameIsActive || $selectTypeIsActive || $bookAuthorIsActive) {
+                        $bookList = [];
+                        if ($bookNameIsActive) {
+                            $bookList = $kitaplar;
+                            $bookNameIsActive = false;
+                        }
+                        if ($selectTypeIsActive) {
+                            $bookList = array_merge($bookList, $kitaplarByType);
+                            $selectTypeIsActive = false;
+                        }
+                        if ($bookAuthorIsActive) {
+                            $bookList = array_merge($bookList, $kitaplarByAuthor);
+                            $bookAuthorIsActive = false;
+                        }
+                        foreach ($bookList as $kitap) {
+                            echo "
+                            <tr> 
+                                <td>" . $kitap['ID'] . "</td>
+                                <td>" . $kitap['kitap_ismi'] . "</td>
+                                <td>" . $kitap['kitap_türü'] . "</td>
+                                <td>" . $kitap['kitap_sayfa_sayisi'] . "</td>
+                                <td>" . $kitap['kitap_yazari'] . "</td>
+                            </tr>";
+                        }
+                    } else{
+                        echo getAllBooks($conn);
                     }
-                    if ($selectTypeIsActive) {
-                        $bookList = array_merge($bookList, $kitaplarByType);
-                        $selectTypeIsActive = false;
-                    }
-                    if ($bookAuthorIsActive) {
-                        $bookList = array_merge($bookList, $kitaplarByAuthor);
-                        $bookAuthorIsActive = false;
-                    }
-                    foreach ($bookList as $kitap) {
-                        echo "
-                        <tr> 
-                            <td>" . $kitap['ID'] . "</td>
-                            <td>" . $kitap['kitap_ismi'] . "</td>
-                            <td>" . $kitap['kitap_türü'] . "</td>
-                            <td>" . $kitap['kitap_sayfa_sayisi'] . "</td>
-                            <td>" . $kitap['kitap_yazari'] . "</td>
-                        </tr>";
-                    }
-                } else{
-                    echo getAllBooks($conn);
-                }
-            ?>
-        </tbody>
-        
-    </table>
-</div>
+                ?>
+            </tbody>
+            
+        </table>
+    </div>
 
     <div class="options">
         <form action="" method="post">

@@ -5,7 +5,7 @@ body{
 .container{
     border: 1px solid black;
     padding: 20px;
-    height: 40%;
+    height: 45%;
 }
 .section{
     display: flex;
@@ -14,7 +14,7 @@ body{
     margin-bottom: 5px;
 }
 .btn{
-    height: 45px;
+    height: 55px;
     width: 100%;
     background-color: aqua;
     font-size: 17px;

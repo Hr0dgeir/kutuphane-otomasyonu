@@ -87,7 +87,7 @@ function getAllBooks($conn) {
 <div class="container">
     <div class="ResultArea">
         <table border="1">
-            <tr>
+            <tr class="table-titles">
                 <th>Kitabın Numarası</th>
                 <th>Kitabın İsmi</th>
                 <th>Kitabın Sayfa Sayısı</th>

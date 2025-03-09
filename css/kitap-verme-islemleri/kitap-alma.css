@@ -5,10 +5,10 @@ body{
 .container{
     border: 1px solid black;
     padding: 20px;
-    height: 40%;
+    height: 48%;
 }
 .btn{
-    height: 45px;
+    height: 55px;
     width: 100%;
     background-color: aqua;
     font-size: 17px;
@@ -18,7 +18,7 @@ body{
     margin-top: 10px;
 }
 .textbox{
-    width: 97.5%;
+    width: 100%;
     border-radius: 10px;
     border: 1px solid black;
     height: 25px;

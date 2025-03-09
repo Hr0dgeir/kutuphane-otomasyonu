@@ -8,8 +8,31 @@ td{
 }
 th{
     padding: 10px;
+    text-align: start;
 }
 tr:hover{
     background-color: rgb(184, 184, 184);
     cursor: pointer;
+}
+.table-titles{
+    background-color: #36304A !important;
+    color: white;
+}
+input{
+    border-radius: 6px !important;
+    padding: 20px !important;
+}
+select{
+    border-radius: 6px !important;
+}
+table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+  
+td, th {
+    padding: 10px !important;
+    border: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }

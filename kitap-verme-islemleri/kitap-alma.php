@@ -95,7 +95,7 @@ function deleteReceiver($conn,$id){
 <div class="container">
     <div class="resultTable">
         <table border="1">
-            <tr>
+            <tr class="table-titles">
                 <th>ID</th>
                 <th>Alıcı</th>
                 <th>Kitap İsmi</th>

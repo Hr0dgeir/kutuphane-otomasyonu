@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 10px;
 }
 .container{
     border: 1px solid black;
     padding: 30px;
-    height: 30%;
+    height: 35%;
 }
 .red{
     background-color: red !important;
@@ -16,7 +17,7 @@ body{
     justify-content: center;
 }
 .btn{
-    height: 50px;
+    height: 55px;
     width: 50%;
     background-color: aqua;
     font-size: 17px;
