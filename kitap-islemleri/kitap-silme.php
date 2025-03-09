@@ -140,12 +140,7 @@ function getAllBooks($conn) {
 ?>
 
 <?php
-if($_SERVER["REQUEST_METHOD"] == 'POST'){
-    if(isset($_POST['textboxDelete']) && $_POST['textboxDelete']){
-        $ID = $_POST['textboxDelete'];
-        deleteBook($conn,$ID);
-    }
-}
+
 
 ?>
 <?php require '../layout/left-panel.php'; ?>
@@ -153,14 +148,21 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     <div class="resultArea">
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>İsim</th>
-                <th>Türü</th>
-                <th>Sayfa Sayısı</th>
-                <th>Yazar</th>
+                <th>Kitabın Numarası</th>
+                <th>Kitabın İsmi</th>
+                <th>Kitabın Türü</th>
+                <th>Kitabın Sayfa Sayısı</th>
+                <th>Kitabın Yazarı</th>
             </tr>
             <tbody id="dataContainer">
                 <?php
+                if($_SERVER["REQUEST_METHOD"] == 'POST'){
+                    if(isset($_POST['textboxDelete']) && $_POST['textboxDelete']){
+                        $ID = $_POST['textboxDelete'];
+                        deleteBook($conn,$ID);
+                        echo getAllData($conn);
+                    }
+                }
                     // Kitapları listelemek için mantık
                     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         if (isset($_GET['textboxSearch']) && $_GET['textboxSearch']) {

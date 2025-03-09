@@ -52,8 +52,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input placeholder="Alıcı İsmini Girin" required name="textboxName" type="text" class="textbox">
         </div>
         <div class="receiverBookNameArea section">
+            <?php
+                function getAllBookNames($conn){
+                    //echo "<script> alert('Hello World!'); </script>";
+                    $stmt = $conn->prepare("SELECT kitap_ismi FROM kitaplar");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    $books = [];
+                
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $books[] = $row; 
+                        }
+                    } else {
+                        //echo "Kitap bulunamadı!";
+                    }
+                    
+                    $stmt->close();
+                    return $books;
+                }
+            ?>
+            <label >Kitap İsmini Giriniz</label>
+            <input list="options" id="search" placeholder="Kitap İsmini Yazınız" class="textbox">
+            <datalist id="options">
+                <?php
+                $bookNames = getAllBookNames($conn);
+                foreach ($bookNames as $name) {
+                    echo "<option value='" . $name['kitap_ismi'] . "'>" . $name['kitap_ismi'] . "</option>";
+                }
+                ?>
+            </datalist>
+            <!--
             <label for="">Verilen Kitap İsmini Giriniz</label>
             <input placeholder="Verilen Kitap İsmini Girin" required name="textboxBookName" type="text" class="textbox">
+            -->
         </div>
         <div class="receiverDateArea section">
             <label for="">Verilen Tarihi Giriniz</label>

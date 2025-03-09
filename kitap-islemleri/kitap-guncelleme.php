@@ -88,11 +88,11 @@ function getAllBooks($conn) {
     <div class="ResultArea">
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Kitap İsmi</th>
-                <th>Kitap Sayfa Sayısı</th>
-                <th>Kitap Türü</th>
-                <th>Kitap Yazarı</th>
+                <th>Kitabın Numarası</th>
+                <th>Kitabın İsmi</th>
+                <th>Kitabın Sayfa Sayısı</th>
+                <th>Kitabın Türü</th>
+                <th>Kitabın Yazarı</th>
             </tr>
             <tbody id="tableContainer">
                 <?php
